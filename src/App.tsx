@@ -18,8 +18,6 @@ import EditPostPage from './pages/EditPostPage'
 import AuthPage from './pages/AuthPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import NotFoundPage from './pages/NotFoundPage'
-import ExplorePage from './pages/ExplorePage'
-import TrendingPage from './pages/TrendingPage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -61,20 +59,7 @@ function App() {
                     <BlogPage />
                   </EnhancedLayout>
                 } />
-                
-                <Route path="/explore" element={
-                  <EnhancedLayout>
-                    <ExplorePage />
-                  </EnhancedLayout>
-                } />
-                
-                
-                <Route path="/trending" element={
-                  <EnhancedLayout>
-                    <TrendingPage />
-                  </EnhancedLayout>
-                } />
-                
+                    
                 {/* Protected Routes */}
                 <Route path="/profile" element={
                   <ProtectedRoute>
