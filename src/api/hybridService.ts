@@ -15,12 +15,17 @@ export const hybridService = {
 
       const posts: BlogPost[] = []
 
-      // Add local posts
+      // 1. FETCH FROM LOCAL STORAGE (New Code)
+      // This ensures posts you created are displayed
+      const savedPosts = JSON.parse(localStorage.getItem('user-posts') || '[]')
+      posts.push(...savedPosts)
+
+      // 2. Add local JSON file posts
       if (localPosts.status === 'fulfilled') {
         posts.push(...localPosts.value)
       }
 
-      // Convert and add JSONPlaceholder posts
+      // 3. Convert and add JSONPlaceholder posts
       if (jsonPosts.status === 'fulfilled') {
         const jsonUsers = await jsonPlaceholderApi.getUsers()
         
@@ -58,7 +63,7 @@ export const hybridService = {
         posts.push(...convertedPosts)
       }
 
-      // Sort by date
+      // Sort by date (Newest first)
       return posts.sort((a, b) => 
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
       )
@@ -68,12 +73,10 @@ export const hybridService = {
     }
   },
 
-  // --- NEW METHOD ADDED HERE ---
   async getPost(id: string): Promise<BlogPost | undefined> {
     const posts = await this.getHybridPosts();
     return posts.find(p => p.id === id);
   },
-  // -----------------------------
 
   async getHybridComments(postId: string): Promise<Comment[]> {
     try {
@@ -86,7 +89,12 @@ export const hybridService = {
 
       const comments: Comment[] = []
 
-      // Add local comments for this post
+      // Fetch from Local Storage
+      const storageComments = JSON.parse(localStorage.getItem('user-comments') || '[]') as Comment[]
+      const userComments = storageComments.filter(c => c.postId === postId)
+      comments.push(...userComments)
+
+      // Add local comments
       if (localComments.status === 'fulfilled') {
         const filteredLocal = localComments.value.filter(c => 
           c.postId === postId || c.postId === postId.replace('json-', '')
@@ -94,7 +102,7 @@ export const hybridService = {
         comments.push(...filteredLocal)
       }
 
-      // Convert and add JSONPlaceholder comments
+      // Add JSONPlaceholder comments
       if (jsonComments.status === 'fulfilled') {
         const convertedComments = jsonComments.value.slice(0, 5).map(jsonComment => ({
           id: `json-comment-${jsonComment.id}`,
@@ -110,7 +118,6 @@ export const hybridService = {
         comments.push(...convertedComments)
       }
 
-      // Sort by date
       return comments.sort((a, b) => 
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       )
@@ -121,7 +128,6 @@ export const hybridService = {
   },
 
   async createHybridComment(comment: Omit<Comment, 'id'>): Promise<Comment> {
-    // Store in localStorage for now (in real app, send to API)
     const newComment: Comment = {
       ...comment,
       id: `comment-${Date.now()}`,
@@ -129,7 +135,6 @@ export const hybridService = {
       likes: 0,
     }
 
-    // Save to localStorage
     const savedComments = JSON.parse(localStorage.getItem('user-comments') || '[]')
     savedComments.push(newComment)
     localStorage.setItem('user-comments', JSON.stringify(savedComments))
@@ -137,15 +142,18 @@ export const hybridService = {
     return newComment
   },
 
+  // This ensures the post is saved to localStorage
   async createHybridPost(post: Omit<BlogPost, 'id'>): Promise<BlogPost> {
     const newPost: BlogPost = {
       ...post,
       id: `post-${Date.now()}`,
       publishedAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
+      likes: 0,
+      views: 0,
+      bookmarks: 0
     }
 
-    // Save to localStorage
     const savedPosts = JSON.parse(localStorage.getItem('user-posts') || '[]')
     savedPosts.push(newPost)
     localStorage.setItem('user-posts', JSON.stringify(savedPosts))
@@ -155,12 +163,6 @@ export const hybridService = {
 
   async getUserPosts(userId: string): Promise<BlogPost[]> {
     const allPosts = await this.getHybridPosts()
-    const userPosts = allPosts.filter(post => post.authorId === userId)
-    
-    // Add posts from localStorage
-    const savedPosts = JSON.parse(localStorage.getItem('user-posts') || '[]')
-    const localUserPosts = savedPosts.filter((post: BlogPost) => post.authorId === userId)
-    
-    return [...localUserPosts, ...userPosts]
+    return allPosts.filter(post => post.authorId === userId)
   },
 }

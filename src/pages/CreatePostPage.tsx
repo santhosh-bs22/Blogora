@@ -1,15 +1,15 @@
 import React from 'react'
 import MarkdownEditor from '../components/editor/MarkdownEditor'
 import { useNavigate } from 'react-router-dom'
-import { postsApi } from '../api/posts'
+import { hybridService } from '../api/hybridService' // Changed from postsApi to hybridService
 import { useAuth } from '../context/AuthContext'
 import { toast } from 'sonner'
-import { useQueryClient } from '@tanstack/react-query' // Add this import
+import { useQueryClient } from '@tanstack/react-query'
 
 const CreatePostPage: React.FC = () => {
   const { user } = useAuth()
   const navigate = useNavigate()
-  const queryClient = useQueryClient() // Initialize query client
+  const queryClient = useQueryClient()
 
   const handleSubmit = async (data: any) => {
     if (!user) return
@@ -27,9 +27,11 @@ const CreatePostPage: React.FC = () => {
         },
       }
 
-      const newPost = await postsApi.createPost(postData)
+      // Use hybridService to save to local storage
+      await hybridService.createHybridPost(postData)
       
-      // Invalidate the cache so the list updates immediately
+      // Invalidate 'hybridPosts' because that's what EnhancedHomePage uses
+      await queryClient.invalidateQueries({ queryKey: ['hybridPosts'] })
       await queryClient.invalidateQueries({ queryKey: ['blogPosts'] })
       
       toast.success(
@@ -38,8 +40,7 @@ const CreatePostPage: React.FC = () => {
           : 'Post saved as draft'
       )
       
-      // Navigate to the blog list page to see the new post
-      navigate('/blog') 
+      navigate('/') // Navigate to home to see the new post immediately
     } catch (error) {
       toast.error('Failed to save post')
       console.error(error)

@@ -8,14 +8,14 @@ export interface BlogPost {
   category: string
   tags: string[]
   publishedAt: string
-  updatedAt: string  // Add this
+  updatedAt: string
   readTime: number
   likes: number
   bookmarks: number
-  views: number  // Add this
+  views: number
   featuredImage?: string
-  isFeatured?: boolean  // Add this
-  status: 'draft' | 'published'  // Add this
+  isFeatured?: boolean
+  status: 'draft' | 'published'
 }
 
 export interface Author {
@@ -24,7 +24,7 @@ export interface Author {
   avatar: string
   bio: string
   role: string
-  social?: {  // Add this
+  social?: {
     twitter?: string
     github?: string
     website?: string
@@ -35,6 +35,7 @@ export interface Author {
 export interface Comment {
   id: string
   postId: string
+  parentId?: string | null // Added this field for replies
   author: string
   avatar: string
   content: string

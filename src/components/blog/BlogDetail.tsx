@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { Calendar, Clock, ArrowLeft, Share2, Heart } from 'lucide-react'
 import { Button } from '../ui/Button'
 import { Badge } from '../ui/Badge'
@@ -13,16 +13,24 @@ const BlogDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>()
   const ref = useRef(null)
 
-  const { scrollYProgress } = useScroll({
+  // #3 Reading Progress Bar Logic
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
+
+  // Parallax effects
+  const { scrollYProgress: heroScroll } = useScroll({
     target: ref,
     offset: ["start start", "end start"]
   })
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const y = useTransform(heroScroll, [0, 1], ["0%", "50%"])
+  const opacity = useTransform(heroScroll, [0, 0.5], [1, 0])
 
   const { data: post, isLoading } = useQuery({
     queryKey: ['post', id],
-    // This now works because we added getPost to hybridService
     queryFn: () => hybridService.getPost(id || ''),
     enabled: !!id
   })
@@ -36,8 +44,14 @@ const BlogDetail: React.FC = () => {
   if (!post) return <div className="container py-20 text-center">Post not found</div>
 
   return (
-    <div className="min-h-screen bg-background pb-20">
-      {/* Parallax Hero Section */}
+    <div className="min-h-screen bg-background pb-20 relative">
+      {/* #3 Progress Bar Visualization */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-2 bg-primary z-50 origin-left"
+        style={{ scaleX }}
+      />
+
+      {/* #8 Parallax Hero Section (Image Reveal) */}
       <div className="relative h-[60vh] overflow-hidden flex items-center justify-center" ref={ref}>
         <motion.div 
           style={{ y, opacity }} 
@@ -118,13 +132,13 @@ const BlogDetail: React.FC = () => {
           </div>
 
           <div className="prose prose-lg dark:prose-invert max-w-none">
+            {/* #8 Image Scroll Reveal inside content */}
             <motion.div
-               initial={{ opacity: 0 }}
-               whileInView={{ opacity: 1 }}
+               initial={{ opacity: 0, filter: 'blur(10px)' }}
+               whileInView={{ opacity: 1, filter: 'blur(0px)' }}
                viewport={{ once: true, margin: "-100px" }}
-               transition={{ duration: 0.5 }}
+               transition={{ duration: 0.8 }}
             >
-               {/* Simulating markdown content rendering */}
                <div dangerouslySetInnerHTML={{ __html: post.content }} /> 
             </motion.div>
           </div>

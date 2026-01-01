@@ -1,6 +1,7 @@
 import React from 'react'
 import { Moon, Sun } from 'lucide-react'
-import { useTheme } from '../../context/ThemeContext' // Updated import
+import { motion, AnimatePresence } from 'framer-motion'
+import { useTheme } from '../../context/ThemeContext'
 import { Button } from '../ui/Button'
 
 const ThemeToggle: React.FC = () => {
@@ -11,14 +12,24 @@ const ThemeToggle: React.FC = () => {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="h-9 w-9"
+      className="h-9 w-9 overflow-hidden relative"
       aria-label="Toggle theme"
     >
-      {theme === 'light' ? (
-        <Moon className="h-4 w-4" />
-      ) : (
-        <Sun className="h-4 w-4" />
-      )}
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={theme}
+          initial={{ y: -20, opacity: 0, rotate: -90 }}
+          animate={{ y: 0, opacity: 1, rotate: 0 }}
+          exit={{ y: 20, opacity: 0, rotate: 90 }}
+          transition={{ duration: 0.2 }}
+        >
+          {theme === 'light' ? (
+            <Moon className="h-5 w-5" />
+          ) : (
+            <Sun className="h-5 w-5" />
+          )}
+        </motion.div>
+      </AnimatePresence>
     </Button>
   )
 }

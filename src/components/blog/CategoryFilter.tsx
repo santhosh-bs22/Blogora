@@ -1,5 +1,6 @@
 import React from 'react'
 import { Badge } from '../ui/Badge'
+import { motion } from 'framer-motion'
 
 interface CategoryFilterProps {
   selectedCategory: string
@@ -22,18 +23,21 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
   return (
     <div className="flex flex-wrap gap-2">
       {categories.map((category) => (
-        <button
+        <motion.button
           key={category.id}
           onClick={() => onCategoryChange(category.id)}
           className="focus:outline-none"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          layout
         >
           <Badge
             variant={selectedCategory === category.id ? 'default' : 'outline'}
-            className="cursor-pointer hover:bg-primary/20 transition-colors"
+            className="cursor-pointer px-4 py-1.5 text-sm transition-colors duration-300"
           >
             {category.label}
           </Badge>
-        </button>
+        </motion.button>
       ))}
     </div>
   )
