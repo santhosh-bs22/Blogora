@@ -5,7 +5,7 @@ import {
   Sparkles, Users, Rocket, Zap, 
   Flame, User
 } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion' // Added framer-motion
+import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '../components/ui/Button'
 import { Input } from '../components/ui/Input'
 import { Card, CardContent } from '../components/ui/Card'
@@ -15,6 +15,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/Avatar'
 import BlogCard from '../components/blog/BlogCard'
 import { useQuery } from '@tanstack/react-query'
 import { hybridService } from '../api/hybridService'
+import { BlogPost } from '../api/types' // Import the type to ensure type safety
 
 // Animation Variants
 const containerVariants = {
@@ -72,16 +73,26 @@ const EnhancedHomePage: React.FC = () => {
     return matchesSearch && matchesCategory
   })
 
-  // Helper function to safely get post data (kept from original)
-  const getPostData = (post: any) => ({
+  // FIXED: Properly constructs the BlogPost object with all required fields
+  const getPostData = (post: any): BlogPost => ({
     id: post?.id || 'unknown',
     title: post?.title || 'Untitled',
     excerpt: post?.excerpt || 'No description available',
+    
+    // Missing fields added here:
+    content: post?.content || '', 
+    authorId: post?.authorId || post?.author?.id || 'unknown',
+    updatedAt: post?.updatedAt || new Date().toISOString(),
+    bookmarks: post?.bookmarks || 0,
+
     category: post?.category || 'General',
     author: {
+      id: post?.author?.id || 'unknown',
       name: post?.author?.name || 'Unknown Author',
       avatar: post?.author?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=anonymous`,
-      id: post?.author?.id || 'unknown'
+      // Ensure Author interface requirements are met:
+      bio: post?.author?.bio || 'No bio available',
+      role: post?.author?.role || 'Member'
     },
     featuredImage: post?.featuredImage || `https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80&auto=format&fit=crop`,
     publishedAt: post?.publishedAt || new Date().toISOString(),
