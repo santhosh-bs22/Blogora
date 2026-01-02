@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+# Blogora
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Blogora is a modern, feature-rich blogging platform built with React, TypeScript, and Vite. It offers a seamless experience for readers and writers with a responsive design, interactive UI elements, and a robust content management system.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern & Responsive UI**: Built with Tailwind CSS and enhanced with smooth animations using Framer Motion.
+- **Content Discovery**:
+  - **Search**: Real-time search for articles, tags, and authors.
+  - **Filtering**: Filter posts by categories (React, TypeScript, JavaScript, etc.).
+  - **Trending & Popular**: Dedicated sections for trending and most-liked articles.
+- **Content Management**:
+  - Create and Edit blog posts with a rich editor.
+  - View detailed blog posts with author info and related tags.
+- **Authentication System**:
+  - Secure Login and Registration pages.
+  - Protected routes for creating/editing content and viewing profiles.
+  - *Note: Currently uses a mock API/local storage implementation.*
+- **Theming**: Integrated Dark/Light mode toggle.
+- **Interactive Elements**: Uses Radix UI primitives for accessible, high-quality components (Tabs, Dropdowns, Dialogs).
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Core
+- **Framework**: [React 19] 
+- **Build Tool**: [Vite] 
+- **Language**: [TypeScript] 
 
-## Expanding the ESLint configuration
+### Styling & UI
+- **Tailwind CSS**: Utility-first CSS framework.
+- **Framer Motion**: Production-ready motion library for React.
+- **Lucide React**: Beautiful & consistent icons.
+- **Radix UI**: Unstyled, accessible UI primitives.
+- **Sonner**: An opinionated toast component for React.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### State & Data
+- **TanStack Query (React Query)**: Powerful asynchronous state management.
+- **React Router DOM v7**: Client-side routing.
+- **Axios**: Promise-based HTTP client.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Forms & Validation
+- **React Hook Form**: Performant, flexible, and extensible forms.
+- **Zod**: TypeScript-first schema declaration and validation.
+ 
