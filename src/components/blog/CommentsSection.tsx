@@ -228,7 +228,7 @@ const EnhancedCommentsSection: React.FC<EnhancedCommentsSectionProps> = ({ postI
             <p className="text-muted-foreground mb-4">
               Sign in to leave a comment and interact with the community
             </p>
-            <Button onClick={() => window.location.href = '/login'}>
+            <Button onClick={() => window.location.href = '/Blogora/login'}>
               Sign In to Comment
             </Button>
           </CardContent>
