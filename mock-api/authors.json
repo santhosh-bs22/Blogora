@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "name": "Sarah Johnson",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=SarahJohnson",
+    "bio": "Senior Frontend Developer with 8+ years of experience specializing in React and modern web technologies. Lead developer at TechCorp Inc. and passionate about clean code architecture.",
+    "role": "Senior Frontend Developer",
+    "social": {
+      "twitter": "@sarah_dev",
+      "github": "sarahjohnson",
+      "website": "https://sarahjohnson.dev"
+    }
+  },
+  {
+    "id": "2",
+    "name": "Michael Chen",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MichaelChen",
+    "bio": "TypeScript enthusiast and full-stack developer with expertise in Node.js and cloud architecture. Author of multiple open-source libraries and regular conference speaker.",
+    "role": "Full Stack Engineer",
+    "social": {
+      "twitter": "@michael_chen",
+      "github": "michaelchen",
+      "linkedin": "michaelchen-dev"
+    }
+  },
+  {
+    "id": "3",
+    "name": "Emma Davis",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=EmmaDavis",
+    "bio": "UI/UX designer turned frontend developer with 5 years of experience. Focuses on creating beautiful, accessible web experiences and design systems.",
+    "role": "Design Engineer",
+    "social": {
+      "twitter": "@emma_designs",
+      "dribbble": "emmadavis",
+      "website": "https://emmadavis.design"
+    }
+  },
+  {
+    "id": "4",
+    "name": "Alex Rodriguez",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=AlexRodriguez",
+    "bio": "Backend developer specializing in microservices architecture and database optimization. Over 6 years of experience with Python, Go, and cloud platforms.",
+    "role": "Backend Engineer",
+    "social": {
+      "twitter": "@alex_rod_backend",
+      "github": "alexrodriguez",
+      "linkedin": "alexrodriguez"
+    }
+  },
+  {
+    "id": "5",
+    "name": "Priya Sharma",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=PriyaSharma",
+    "bio": "DevOps engineer passionate about CI/CD pipelines, containerization, and infrastructure as code. Leads cloud migration projects for enterprise clients.",
+    "role": "DevOps Engineer",
+    "social": {
+      "twitter": "@priya_devops",
+      "github": "priyasharma",
+      "website": "https://priya.devops.blog"
+    }
+  }
+]

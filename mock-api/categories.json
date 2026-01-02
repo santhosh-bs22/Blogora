@@ -1,0 +1,50 @@
+[
+  {
+    "id": "react",
+    "name": "React",
+    "slug": "react",
+    "description": "Articles about React ecosystem, hooks, state management, and modern React patterns",
+    "postCount": 15,
+    "color": "#61DAFB"
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript",
+    "slug": "typescript",
+    "description": "TypeScript tips, patterns, and best practices for type-safe JavaScript",
+    "postCount": 8,
+    "color": "#3178C6"
+  },
+  {
+    "id": "javascript",
+    "name": "JavaScript",
+    "slug": "javascript",
+    "description": "Modern JavaScript features, performance optimization, and ES6+ patterns",
+    "postCount": 12,
+    "color": "#F7DF1E"
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind CSS",
+    "slug": "tailwind",
+    "description": "Utility-first CSS framework, customization, and responsive design",
+    "postCount": 6,
+    "color": "#38B2AC"
+  },
+  {
+    "id": "backend",
+    "name": "Backend Development",
+    "slug": "backend",
+    "description": "Node.js, APIs, databases, server architecture, and backend best practices",
+    "postCount": 9,
+    "color": "#68A063"
+  },
+  {
+    "id": "devops",
+    "name": "DevOps",
+    "slug": "devops",
+    "description": "Docker, Kubernetes, CI/CD, cloud infrastructure, and deployment strategies",
+    "postCount": 7,
+    "color": "#2496ED"
+  }
+]

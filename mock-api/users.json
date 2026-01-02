@@ -1,0 +1,36 @@
+[
+  {
+    "id": "user-1",
+    "name": "Sarah Johnson",
+    "email": "sarah@example.com",
+    "password": "password123",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=SarahJohnson",
+    "bio": "Senior Frontend Developer with 8+ years of experience specializing in React and modern web technologies.",
+    "role": "user",
+    "createdAt": "2024-01-01T10:30:00Z",
+    "updatedAt": "2024-12-25T14:20:00Z",
+    "stats": {
+      "posts": 15,
+      "likes": 3420,
+      "comments": 156,
+      "views": 52100
+    }
+  },
+  {
+    "id": "user-2",
+    "name": "Michael Chen",
+    "email": "michael@example.com",
+    "password": "password123",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MichaelChen",
+    "bio": "TypeScript enthusiast and full-stack developer with expertise in Node.js and cloud architecture.",
+    "role": "admin",
+    "createdAt": "2024-01-15T14:45:00Z",
+    "updatedAt": "2024-12-24T11:30:00Z",
+    "stats": {
+      "posts": 8,
+      "likes": 1890,
+      "comments": 89,
+      "views": 31200
+    }
+  }
+]

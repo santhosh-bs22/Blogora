@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "postId": "1",
+    "author": "Alex Turner",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=AlexTurner",
+    "content": "Great article! The explanations about concurrent rendering were particularly helpful. I've already started implementing startTransition in our production app and noticed significant improvements in user experience.",
+    "createdAt": "2024-01-16T14:30:00Z",
+    "likes": 12,
+    "isVerified": true
+  },
+  {
+    "id": "2",
+    "postId": "1",
+    "author": "Jamie Smith",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=JamieSmith",
+    "content": "I've been using React 18 for a few months now and these features have significantly improved our app's performance. The automatic batching alone reduced our re-renders by 40%!",
+    "createdAt": "2024-01-17T11:20:00Z",
+    "likes": 8,
+    "isVerified": false
+  },
+  {
+    "id": "3",
+    "postId": "2",
+    "author": "Taylor Reed",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=TaylorReed",
+    "content": "Excellent TypeScript tips! I especially appreciate the section on utility types - they've saved me countless hours of redundant type definitions.",
+    "createdAt": "2024-01-21T09:45:00Z",
+    "likes": 15,
+    "isVerified": true
+  },
+  {
+    "id": "4",
+    "postId": "2",
+    "author": "Morgan Lee",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MorganLee",
+    "content": "The conditional types example was a game-changer for our API response handling. Thanks for the practical implementation!",
+    "createdAt": "2024-01-22T16:10:00Z",
+    "likes": 6,
+    "isVerified": false
+  },
+  {
+    "id": "5",
+    "postId": "3",
+    "author": "Casey Kim",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CaseyKim",
+    "content": "Tailwind's JIT mode reduced our CSS bundle size from 1.2MB to 45KB. Incredible performance gains!",
+    "createdAt": "2024-01-26T13:25:00Z",
+    "likes": 21,
+    "isVerified": true
+  },
+  {
+    "id": "6",
+    "postId": "4",
+    "author": "Riley Patel",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RileyPatel",
+    "content": "The security section is crucial. Too many tutorials skip these important considerations. Great job emphasizing best practices!",
+    "createdAt": "2024-02-02T10:15:00Z",
+    "likes": 9,
+    "isVerified": false
+  },
+  {
+    "id": "7",
+    "postId": "5",
+    "author": "Jordan Wong",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=JordanWong",
+    "content": "Docker Compose setup example saved me hours of configuration. The multi-stage build tips were particularly useful for our CI/CD pipeline.",
+    "createdAt": "2024-02-11T14:40:00Z",
+    "likes": 17,
+    "isVerified": true
+  },
+  {
+    "id": "8",
+    "postId": "6",
+    "author": "Sam Garcia",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=SamGarcia",
+    "content": "Next.js 14's Server Components have completely changed how we think about data fetching. The performance improvements are substantial.",
+    "createdAt": "2024-02-19T11:05:00Z",
+    "likes": 24,
+    "isVerified": true
+  },
+  {
+    "id": "9",
+    "postId": "7",
+    "author": "Drew Martin",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=DrewMartin",
+    "content": "Web Workers implementation example was exactly what I needed for our image processing application. Clear and concise explanation!",
+    "createdAt": "2024-02-26T09:30:00Z",
+    "likes": 11,
+    "isVerified": false
+  }
+]
